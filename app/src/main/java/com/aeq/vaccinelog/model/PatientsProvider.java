@@ -1,4 +1,4 @@
-package com.aeq.vaccinelog;
+package com.aeq.vaccinelog.model;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+
+import com.aeq.vaccinelog.database.DBOpenHelper;
 
 public class PatientsProvider extends ContentProvider {
     private static final String AUTHORITY = "com.aeq.vaccinelog.patientsprovider";

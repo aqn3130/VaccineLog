@@ -29,6 +29,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.aeq.vaccinelog.database.DBOpenHelper;
+import com.aeq.vaccinelog.database.DataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +53,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
+
+
+    String email = DBOpenHelper.PATIENT_EMAIL;
+
+
     private static final String[] DUMMY_CREDENTIALS = new String[]{
             "email:@", "password:passw"
     };
@@ -63,10 +72,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    DataSource mDataSource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mDataSource = new DataSource(this);
+        mDataSource.open();
+        Toast.makeText(this,"Database acquired", Toast.LENGTH_SHORT);
+
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -83,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.sign_in);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,8 +108,36 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptRegister();
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        mDataSource.close();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        mDataSource.open();
+    }
+
+    private void attemptRegister() {
+
+        Intent intent = new Intent(this,Registration.class);
+        startActivity(intent);
+
+
     }
 
     private void populateAutoComplete() {
@@ -190,7 +235,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
 
-            if(mAuthTask != null){
+            if(mAuthTask.doInBackground()){
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
@@ -203,7 +248,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isPasswordValid(String password) {
+
         //TODO: Replace this with your own logic
+
         return password.length() > 4;
     }
 
@@ -331,7 +378,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
