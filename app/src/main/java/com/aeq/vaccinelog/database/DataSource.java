@@ -39,17 +39,39 @@ public class DataSource {
 
     }
 
-    public List<DataItem> getAllItems(){
+    public List<DataItem> getAllItems(String email){
         List<DataItem> dataItems = new ArrayList<>();
-        Cursor cursor = mDatabase.query(DBOpenHelper.TABLE_PATIENT,DBOpenHelper.ALL_COLUMNS,null,null,null,null,null);
+        
+        
+        String emailArr[] = {email};
+        Cursor cursor = mDatabase.query(DBOpenHelper.TABLE_PATIENT,DBOpenHelper.ALL_COLUMNS,DBOpenHelper.PATIENT_EMAIL + "=?",emailArr,null,null,null);
 
         while (cursor.moveToNext()){
             DataItem item = new DataItem();
-            item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_FN)));
-            item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_LN)));
+            item.setFirstName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_FN)));
+            item.setLastName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_LN)));
             item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_EMAIL)));
-            item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_PASSWORD)));
+            item.setPassword(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_PASSWORD)));
         }
+        cursor.close();
         return dataItems;
+    }
+
+    public DataItem getUser(String email){
+
+        String userEmails[] = {email};
+
+        Cursor cursor = mDatabase.query(DBOpenHelper.TABLE_PATIENT,DBOpenHelper.ALL_COLUMNS,DBOpenHelper.PATIENT_EMAIL + "=?",userEmails,null,null,null);
+
+        DataItem item = null;
+        while (cursor.moveToNext()){
+            item = new DataItem();
+            item.setFirstName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_FN)));
+            item.setLastName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_LN)));
+            item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_EMAIL)));
+            item.setPassword(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_PASSWORD)));
+        }
+        cursor.close();
+        return item;
     }
 }

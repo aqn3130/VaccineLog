@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import com.aeq.vaccinelog.database.DBOpenHelper;
+import com.aeq.vaccinelog.database.DataSource;
+import com.aeq.vaccinelog.model.DataItem;
 import com.aeq.vaccinelog.model.PatientsProvider;
 
 public class MainActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -25,11 +27,16 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        String userEmail = getIntent().getExtras().getString(LoginActivity.DATA_ITEM_KEY);
+        DataSource dataSource = new DataSource(this);
+        DataItem item = dataSource.getUser(userEmail);
 
         String[] from = {DBOpenHelper.PATIENT_FN,DBOpenHelper.PATIENT_LN};
+//        String[] from = {item.getFirstName(),item.getLastName()};
         int[] to = {android.R.id.text1};
+
         cursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,null,from,to,0);
-        ListView listView = (ListView) findViewById(android.R.id.list);
+        ListView listView = findViewById(android.R.id.list);
         listView.setAdapter(cursorAdapter);
 
         getLoaderManager().initLoader(0, null, this);

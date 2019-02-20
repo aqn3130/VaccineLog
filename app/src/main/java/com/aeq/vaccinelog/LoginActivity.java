@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +34,7 @@ import android.widget.Toast;
 
 import com.aeq.vaccinelog.database.DBOpenHelper;
 import com.aeq.vaccinelog.database.DataSource;
+import com.aeq.vaccinelog.model.DataItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+    public static final String DATA_ITEM_KEY = "item_key";
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -55,12 +58,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
 
 
-    String email = DBOpenHelper.PATIENT_EMAIL;
+    DataSource dataSource = null;
 
+    private static String userEmail = null;
+    private static String userPassword = null;
+
+    private static String email = "email:"+userEmail;
+    private static String pass = "password:"+userPassword;
 
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "email:@", "password:passw"
+            email, pass
     };
+
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -89,6 +99,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
+
+        dataSource = new DataSource(this);
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -104,6 +117,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                System.out.println(mEmailView.getText().toString());
+//                List<DataItem> users = dataSource.getAllItems(mEmailView.getText().toString());
+//
+//                for(DataItem user : users){
+//                    if(user.getEmail() == mEmailView.getText().toString()){
+//                        userEmail = user.getEmail();
+//                        userPassword = user.getPassword();
+//                        System.out.println(user.getPassword());
+//                    }
+//
+//
+//                }
+                DataItem user = dataSource.getUser(mEmailView.getText().toString());
+                if(user != null) {
+                    userEmail = user.getEmail();
+                    userPassword = user.getPassword();
+                    System.out.println(user.getPassword());
+                }
+
                 attemptLogin();
             }
         });
@@ -236,7 +269,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask.execute((Void) null);
 
             if(mAuthTask.doInBackground()){
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, AddChild.class);
+//                intent.putExtra(DATA_ITEM_KEY,userEmail);
                 startActivity(intent);
             }
         }
@@ -251,7 +285,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         //TODO: Replace this with your own logic
 
-        return password.length() > 4;
+        return password.length() > 2;
     }
 
     /**
@@ -369,13 +403,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            if (userEmail != null) {
+                // Account exists, return true if the password matches.
+                if (userEmail.equals(mEmail))
+                return userPassword.equals(mPassword);
             }
+
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(mEmail)) {
+//                    // Account exists, return true if the password matches.
+//                    return pieces[1].equals(mPassword);
+//                }
+//            }
 
             // TODO: register the new account here.
             return false;

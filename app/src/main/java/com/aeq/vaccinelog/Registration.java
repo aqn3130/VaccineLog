@@ -65,7 +65,7 @@ public class Registration extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void createItem(TextInputLayout fn, TextInputLayout ln, TextInputLayout email, TextInputLayout password) {
-        DataItem dataItem = new DataItem(fn.getEditText().getText().toString(),ln.getEditText().getText().toString(),email.getEditText().toString(),password.getEditText().toString());
+        DataItem dataItem = new DataItem(fn.getEditText().getText().toString(),ln.getEditText().getText().toString(),email.getEditText().getText().toString(),password.getEditText().getText().toString());
         DataItem item = datasource.createItem(dataItem);
 
         Log.d("MainActivity", "Inserted patient " + item.getFirstName());
