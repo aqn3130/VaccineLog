@@ -270,7 +270,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if(mAuthTask.doInBackground()){
                 Intent intent = new Intent(this, AddChild.class);
-//                intent.putExtra(DATA_ITEM_KEY,userEmail);
+                intent.putExtra(DATA_ITEM_KEY,userEmail);
                 startActivity(intent);
             }
         }

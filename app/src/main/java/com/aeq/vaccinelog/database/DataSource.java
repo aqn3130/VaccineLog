@@ -34,7 +34,8 @@ public class DataSource {
 
     public DataItem createItem(DataItem item){
         ContentValues values = item.toValues();
-        mDatabase.insert(DBOpenHelper.TABLE_PATIENT,null,values);
+//        mDatabase.insert(DBOpenHelper.TABLE_PATIENT,null,values);
+        mDatabase.insert(Tables.TABLE_PATIENT,null,values);
         return item;
 
     }
@@ -44,14 +45,15 @@ public class DataSource {
         
         
         String emailArr[] = {email};
-        Cursor cursor = mDatabase.query(DBOpenHelper.TABLE_PATIENT,DBOpenHelper.ALL_COLUMNS,DBOpenHelper.PATIENT_EMAIL + "=?",emailArr,null,null,null);
+//        Cursor cursor = mDatabase.query(DBOpenHelper.TABLE_PATIENT,DBOpenHelper.ALL_COLUMNS,DBOpenHelper.PATIENT_EMAIL + "=?",emailArr,null,null,null);
+        Cursor cursor = mDatabase.query(Tables.TABLE_PATIENT,Tables.ALL_COLUMNS,Tables.PATIENT_EMAIL + "=?",emailArr,null,null,null);
 
         while (cursor.moveToNext()){
             DataItem item = new DataItem();
-            item.setFirstName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_FN)));
-            item.setLastName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_LN)));
-            item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_EMAIL)));
-            item.setPassword(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_PASSWORD)));
+            item.setFirstName(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_FN)));
+            item.setLastName(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_LN)));
+            item.setEmail(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_EMAIL)));
+            item.setPassword(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_PASSWORD)));
         }
         cursor.close();
         return dataItems;
@@ -61,15 +63,15 @@ public class DataSource {
 
         String userEmails[] = {email};
 
-        Cursor cursor = mDatabase.query(DBOpenHelper.TABLE_PATIENT,DBOpenHelper.ALL_COLUMNS,DBOpenHelper.PATIENT_EMAIL + "=?",userEmails,null,null,null);
+        Cursor cursor = mDatabase.query(Tables.TABLE_PATIENT,Tables.ALL_COLUMNS,Tables.PATIENT_EMAIL + "=?",userEmails,null,null,null);
 
         DataItem item = null;
         while (cursor.moveToNext()){
             item = new DataItem();
-            item.setFirstName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_FN)));
-            item.setLastName(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_LN)));
-            item.setEmail(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_EMAIL)));
-            item.setPassword(cursor.getString(cursor.getColumnIndex(DBOpenHelper.PATIENT_PASSWORD)));
+            item.setFirstName(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_FN)));
+            item.setLastName(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_LN)));
+            item.setEmail(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_EMAIL)));
+            item.setPassword(cursor.getString(cursor.getColumnIndex(Tables.PATIENT_PASSWORD)));
         }
         cursor.close();
         return item;

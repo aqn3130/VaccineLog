@@ -18,6 +18,7 @@ import android.widget.SimpleCursorAdapter;
 
 import com.aeq.vaccinelog.database.DBOpenHelper;
 import com.aeq.vaccinelog.database.DataSource;
+import com.aeq.vaccinelog.database.Tables;
 import com.aeq.vaccinelog.model.DataItem;
 import com.aeq.vaccinelog.model.PatientsProvider;
 
@@ -33,7 +34,7 @@ public class Registration extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
 
-        String[] from = {DBOpenHelper.PATIENT_FN,DBOpenHelper.PATIENT_LN};
+        String[] from = {Tables.PATIENT_FN,Tables.PATIENT_LN};
         int[] to = {android.R.id.text1};
         cursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_1,null,from,to,0);
 //        ListView listView = (ListView) findViewById(android.R.id.list);

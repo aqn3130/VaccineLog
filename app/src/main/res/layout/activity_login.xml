@@ -60,7 +60,8 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:importantForAutofill="no" tools:targetApi="o" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +71,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
                 android:text="@string/action_sign_in"
+                android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
 
             <Button
@@ -79,7 +82,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Register"
+                android:background="@color/colorPrimary"
+                android:text="@string/register"
+                android:textColor="@android:color/background_light"
                 android:textStyle="bold" />
 
         </LinearLayout>

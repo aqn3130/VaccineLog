@@ -3,6 +3,7 @@ package com.aeq.vaccinelog.model;
 import android.content.ContentValues;
 
 import com.aeq.vaccinelog.database.DBOpenHelper;
+import com.aeq.vaccinelog.database.Tables;
 
 public class DataItem {
 //    private String id;
@@ -65,10 +66,10 @@ public class DataItem {
     public ContentValues toValues() {
         ContentValues values = new ContentValues(5);
 //        values.put(DBOpenHelper.PATIENT_ID, id);
-        values.put(DBOpenHelper.PATIENT_FN, firstName);
-        values.put(DBOpenHelper.PATIENT_LN, lastName);
-        values.put(DBOpenHelper.PATIENT_EMAIL, email);
-        values.put(DBOpenHelper.PATIENT_PASSWORD, password);
+        values.put(Tables.PATIENT_FN, firstName);
+        values.put(Tables.PATIENT_LN, lastName);
+        values.put(Tables.PATIENT_EMAIL, email);
+        values.put(Tables.PATIENT_PASSWORD, password);
         return values;
     }
 

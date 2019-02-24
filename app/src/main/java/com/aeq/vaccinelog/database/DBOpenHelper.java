@@ -11,42 +11,18 @@ public class DBOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "patients.db";
     private static final int DATABASE_VERSION = 2;
 
-    //Constants for identifying table and columns
-    public static final String TABLE_PATIENT = "patients";
-    public static final String PATIENT_ID = "_id";
-    public static final String PATIENT_FN = "patientFirstName";
-    public static final String PATIENT_LN = "patientLastName";
-    public static final String PATIENT_EMAIL = "patientEmail";
-    public static final String PATIENT_PASSWORD = "patientPassword";
-    public static final String PATIENT_CREATED = "patientCreated";
-
-    //SQL to create table
-    private static final String TABLE_CREATE =
-            "CREATE TABLE " + TABLE_PATIENT + " (" +
-                    PATIENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    PATIENT_FN + " TEXT, " +
-                    PATIENT_LN + " TEXT, " +
-                    PATIENT_EMAIL + " TEXT, " +
-                    PATIENT_PASSWORD + " TEXT, " +
-                    PATIENT_CREATED + " TEXT default CURRENT_TIMESTAMP" +
-                    ")";
-
-    public static final String ALL_COLUMNS[] = {PATIENT_ID,PATIENT_FN,PATIENT_LN,PATIENT_EMAIL,PATIENT_PASSWORD,PATIENT_CREATED};
-
     public DBOpenHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
-        sqLiteDatabase.execSQL(TABLE_CREATE);
+        sqLiteDatabase.execSQL(Tables.TABLE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_PATIENT);
+        sqLiteDatabase.execSQL(Tables.SQL_DELETE);
         onCreate(sqLiteDatabase);
     }
 

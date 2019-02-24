@@ -13,6 +13,7 @@ import android.widget.SimpleCursorAdapter;
 
 import com.aeq.vaccinelog.database.DBOpenHelper;
 import com.aeq.vaccinelog.database.DataSource;
+import com.aeq.vaccinelog.database.Tables;
 import com.aeq.vaccinelog.model.DataItem;
 import com.aeq.vaccinelog.model.PatientsProvider;
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
         DataSource dataSource = new DataSource(this);
         DataItem item = dataSource.getUser(userEmail);
 
-        String[] from = {DBOpenHelper.PATIENT_FN,DBOpenHelper.PATIENT_LN};
+        String[] from = {Tables.PATIENT_FN,Tables.PATIENT_LN};
 //        String[] from = {item.getFirstName(),item.getLastName()};
         int[] to = {android.R.id.text1};
 
