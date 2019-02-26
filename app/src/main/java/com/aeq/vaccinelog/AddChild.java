@@ -45,12 +45,12 @@ public class AddChild extends AppCompatActivity {
         final Intent intent = new Intent(this,ChildRegistration.class);
         intent.putExtra(GUARDIAN_KEY,item.getEmail());
 
+        viewChildren(userEmail);
+
         FloatingActionButton fab = findViewById(R.id.add_child);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                viewChildren(userEmail);
 
                 Snackbar.make(view, "Register a child", Snackbar.LENGTH_LONG)
                         .setAction("START", new View.OnClickListener() {
@@ -85,7 +85,13 @@ public class AddChild extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dataSourceChild.deleteItem(child1.getFirstName());
+                    Snackbar.make(v, "Remove child", Snackbar.LENGTH_LONG)
+                            .setAction("REMOVE", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dataSourceChild.deleteItem(child1.getFirstName());
+                                }
+                            }).show();
                 }
             });
             viewGroup.addView(button);

@@ -34,7 +34,9 @@ import android.widget.Toast;
 
 import com.aeq.vaccinelog.database.DBOpenHelper;
 import com.aeq.vaccinelog.database.DataSource;
+import com.aeq.vaccinelog.database.DataSourcePractitioner;
 import com.aeq.vaccinelog.model.DataItem;
+import com.aeq.vaccinelog.model.DataItemPractitioner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,8 +83,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private String accountType;
 
     DataSource mDataSource;
+    DataSourcePractitioner dataSourcePractitioner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +95,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mDataSource = new DataSource(this);
         mDataSource.open();
+
+
+        dataSourcePractitioner = new DataSourcePractitioner(this);
+        dataSourcePractitioner.open();
         Toast.makeText(this,"Database acquired", Toast.LENGTH_SHORT);
 
+        accountType = getIntent().getExtras().getString(LandingPage.PRACTITIONER_KEY);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -117,24 +126,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                System.out.println(mEmailView.getText().toString());
-//                List<DataItem> users = dataSource.getAllItems(mEmailView.getText().toString());
-//
-//                for(DataItem user : users){
-//                    if(user.getEmail() == mEmailView.getText().toString()){
-//                        userEmail = user.getEmail();
-//                        userPassword = user.getPassword();
-//                        System.out.println(user.getPassword());
-//                    }
-//
-//
-//                }
                 DataItem user = dataSource.getUser(mEmailView.getText().toString());
                 if(user != null) {
                     userEmail = user.getEmail();
                     userPassword = user.getPassword();
-                    System.out.println(user.getPassword());
+                }else {
+                    DataItemPractitioner practitioner = dataSourcePractitioner.getPractitioner(mEmailView.getText().toString());
+                    userEmail = practitioner.getEmail();
+                    userPassword = practitioner.getPassword();
                 }
 
                 attemptLogin();
@@ -166,10 +165,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void attemptRegister() {
-
+        Intent intent2 = new Intent(this,PractitionerRegistration.class);
         Intent intent = new Intent(this,Registration.class);
-        startActivity(intent);
 
+        if(accountType.equals("family"))
+            startActivity(intent);
+        else
+            startActivity(intent2);
 
     }
 
@@ -269,9 +271,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask.execute((Void) null);
 
             if(mAuthTask.doInBackground()){
-                Intent intent = new Intent(this, AddChild.class);
-                intent.putExtra(DATA_ITEM_KEY,userEmail);
-                startActivity(intent);
+                if(accountType.equals("family")){
+                    Intent intent = new Intent(this, AddChild.class);
+                    intent.putExtra(DATA_ITEM_KEY,userEmail);
+                    startActivity(intent);
+                }else {
+                    Intent intent = new Intent(this, PractitionerActivity.class);
+                    startActivity(intent);
+                }
+
             }
         }
     }

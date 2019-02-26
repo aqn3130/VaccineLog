@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChildRegistration">
+    tools:context=".PractitionerRegistration">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,15 +54,15 @@
                                 android:layout_height="match_parent">
 
                                 <EditText
-                                    android:id="@+id/fatherName"
+                                    android:id="@+id/practitionerPassword"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="@string/childFatherName"
+                                    android:hint="@string/practitioner_password"
                                     android:imeActionId="6"
                                     android:imeActionLabel="@string/action_sign_in_short"
                                     android:imeOptions="actionUnspecified"
                                     android:importantForAutofill="no"
-                                    android:inputType="text"
+                                    android:inputType="textPassword"
                                     android:maxLines="1"
                                     android:singleLine="true"
                                     tools:targetApi="o" />
@@ -70,15 +70,15 @@
                             </android.support.design.widget.TextInputLayout>
 
                             <EditText
-                                android:id="@+id/childDOB"
+                                android:id="@+id/practitionerEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/childDOB"
+                                android:hint="@string/practitioner_email"
                                 android:imeActionId="6"
                                 android:imeActionLabel="@string/action_sign_in_short"
                                 android:imeOptions="actionUnspecified"
                                 android:importantForAutofill="no"
-                                android:inputType="text"
+                                android:inputType="textEmailAddress"
                                 android:maxLines="1"
                                 android:singleLine="true"
                                 tools:targetApi="o" />
@@ -86,10 +86,10 @@
                         </android.support.design.widget.TextInputLayout>
 
                         <EditText
-                            android:id="@+id/childLastName"
+                            android:id="@+id/practitionerLastname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/childLastName"
+                            android:hint="@string/practitioner_lname_hint"
                             android:imeActionId="6"
                             android:imeActionLabel="@string/action_sign_in_short"
                             android:imeOptions="actionUnspecified"
@@ -102,10 +102,10 @@
                     </android.support.design.widget.TextInputLayout>
 
                     <EditText
-                        android:id="@+id/childFirstName"
+                        android:id="@+id/practitionerFirstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/childFirstName"
+                        android:hint="@string/practitioner_fname_hint"
                         android:imeActionId="6"
                         android:imeActionLabel="@string/action_sign_in_short"
                         android:imeOptions="actionUnspecified"
@@ -126,10 +126,38 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
-                    android:id="@+id/motherName"
+                    android:id="@+id/practitionerDOB"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/childMotherName"
+                    android:hint="@string/practitioner_dob"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:importantForAutofill="no"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    tools:targetApi="o" />
+
+                <EditText
+                    android:id="@+id/practiceAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/practice_address"
+                    android:imeActionId="6"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    tools:targetApi="o" />
+
+                <EditText
+                    android:id="@+id/practitionerRegistration"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/practitionerRegistration"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -140,7 +168,7 @@
                     tools:targetApi="o" />
 
                 <Button
-                    android:id="@+id/registerChild"
+                    android:id="@+id/registerPractitioner_button"
                     style="?android:textAppearanceSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
