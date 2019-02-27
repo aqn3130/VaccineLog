@@ -93,15 +93,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        accountType = getIntent().getExtras().getString(LandingPage.PRACTITIONER_KEY);
+
         mDataSource = new DataSource(this);
         mDataSource.open();
-
 
         dataSourcePractitioner = new DataSourcePractitioner(this);
         dataSourcePractitioner.open();
         Toast.makeText(this,"Database acquired", Toast.LENGTH_SHORT);
 
-        accountType = getIntent().getExtras().getString(LandingPage.PRACTITIONER_KEY);
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);

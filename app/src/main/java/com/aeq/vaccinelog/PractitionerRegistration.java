@@ -50,6 +50,7 @@ public class PractitionerRegistration extends AppCompatActivity {
             registration.setText(null);
 
             Intent intent = new Intent(this,LoginActivity.class);
+            intent.putExtra(LandingPage.PRACTITIONER_KEY,"practitioner");
             startActivity(intent);
         }
 
