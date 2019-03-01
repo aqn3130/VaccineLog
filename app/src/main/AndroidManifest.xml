@@ -14,6 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ChildEdit"
+            android:label="Edit Child"
+            android:parentActivityName=".AddChild"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.aeq.vaccinelog.AddChild" />
+
+        </activity>
+
+        <activity
             android:name=".PractitionerActivity"
             android:label="@string/title_activity_practitioner"
             android:parentActivityName=".LoginActivity"

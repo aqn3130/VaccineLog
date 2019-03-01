@@ -72,7 +72,6 @@ public class Registration extends AppCompatActivity implements LoaderManager.Loa
         Log.d("MainActivity", "Inserted patient " + item.getFirstName());
 
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra(LandingPage.PRACTITIONER_KEY,"family");
         startActivity(intent);
     }
 

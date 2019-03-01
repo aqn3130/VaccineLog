@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if(getIntent().getExtras() != null)
         accountType = getIntent().getExtras().getString(LandingPage.PRACTITIONER_KEY);
 
         mDataSource = new DataSource(this);
@@ -132,8 +133,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     userPassword = user.getPassword();
                 }else {
                     DataItemPractitioner practitioner = dataSourcePractitioner.getPractitioner(mEmailView.getText().toString());
-                    userEmail = practitioner.getEmail();
-                    userPassword = practitioner.getPassword();
+                    if(practitioner != null) {
+                        userEmail = practitioner.getEmail();
+                        userPassword = practitioner.getPassword();
+                    }
                 }
 
                 attemptLogin();

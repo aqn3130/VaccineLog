@@ -26,6 +26,7 @@ import java.util.List;
 public class AddChild extends AppCompatActivity {
 
     public static final String GUARDIAN_KEY = "guardianID";
+    public static final String CHILD_NAME = "fName";
     private String userEmail = null;
     private DataItem item;
 
@@ -37,6 +38,7 @@ public class AddChild extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if(getIntent().getExtras() != null)
         userEmail = getIntent().getExtras().getString(LoginActivity.DATA_ITEM_KEY);
         DataSource dataSource = new DataSource(this);
 
@@ -77,19 +79,24 @@ public class AddChild extends AppCompatActivity {
 
         Log.d("Add Child","No of Children " + children.size());
 
+        final Intent intent = new Intent(this,ChildEdit.class);
+
         for (final DataItemChild child1 : children){
             Button button = new Button(this);
             String fullname = child1.getFirstName() + " " + child1.getLastName();
             button.setText(fullname);
 
+            intent.putExtra(CHILD_NAME,child1.getFirstName());
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Snackbar.make(v, "Remove child", Snackbar.LENGTH_LONG)
-                            .setAction("REMOVE", new View.OnClickListener() {
+                    Snackbar.make(v, "Edit Child", Snackbar.LENGTH_LONG)
+                            .setAction("Edit", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    dataSourceChild.deleteItem(child1.getFirstName());
+//                                    dataSourceChild.deleteItem(child1.getFirstName());
+                                    startActivity(intent);
+
                                 }
                             }).show();
                 }

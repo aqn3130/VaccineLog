@@ -43,6 +43,19 @@ public class DataSourceChild {
         return rowsDeleted;
     }
 
+    public int updateVaccine(DataItemChild itemChild,String vaccine){
+        ContentValues values = itemChild.toValues();
+        String vaccineArr [] = {vaccine};
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.VACCINES + "=?",vaccineArr);
+        return item;
+    }
+
+    public int updateItem(DataItemChild itemChild){
+        ContentValues values = itemChild.toValues();
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,null,null);
+        return item;
+    }
+
     public List<DataItemChild> getAllItems(String guardianId){
         List<DataItemChild> dataItemsChild = new ArrayList<>();
 
@@ -58,6 +71,7 @@ public class DataSourceChild {
             item.setDateOfBirth(cursor.getString(cursor.getColumnIndex(Tables.DOB)));
             item.setFatherName(cursor.getString(cursor.getColumnIndex(Tables.FATHER_NAME)));
             item.setMotherName(cursor.getString(cursor.getColumnIndex(Tables.MOTHER_NAME)));
+            item.setVaccines(cursor.getString(cursor.getColumnIndex(Tables.VACCINES)));
             dataItemsChild.add(item);
         }
         cursor.close();
@@ -80,6 +94,29 @@ public class DataSourceChild {
             item.setDateOfBirth(cursor.getString(cursor.getColumnIndex(Tables.DOB)));
             item.setFatherName(cursor.getString(cursor.getColumnIndex(Tables.FATHER_NAME)));
             item.setMotherName(cursor.getString(cursor.getColumnIndex(Tables.MOTHER_NAME)));
+            item.setVaccines(cursor.getString(cursor.getColumnIndex(Tables.VACCINES)));
+        }
+        cursor.close();
+        return item;
+    }
+
+    public DataItemChild getChildByFirstName(String childFirstName){
+
+        String firstNameArr[] = {childFirstName};
+
+        Cursor cursor = mDatabase.query(Tables.TABLE_CHILD,Tables.ALL_COLUMNS_CHILD,Tables.FIRST_NAME + "=?",firstNameArr,null,null,null);
+
+        DataItemChild item = null;
+        while (cursor.moveToNext()){
+            item = new DataItemChild();
+
+            item.setGuardian_id(cursor.getString(cursor.getColumnIndex(Tables.GUARDIAN_ID)));
+            item.setFirstName(cursor.getString(cursor.getColumnIndex(Tables.FIRST_NAME)));
+            item.setLastName(cursor.getString(cursor.getColumnIndex(Tables.LAST_NAME)));
+            item.setDateOfBirth(cursor.getString(cursor.getColumnIndex(Tables.DOB)));
+            item.setFatherName(cursor.getString(cursor.getColumnIndex(Tables.FATHER_NAME)));
+            item.setMotherName(cursor.getString(cursor.getColumnIndex(Tables.MOTHER_NAME)));
+            item.setVaccines(cursor.getString(cursor.getColumnIndex(Tables.VACCINES)));
         }
         cursor.close();
         return item;

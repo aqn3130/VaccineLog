@@ -11,17 +11,19 @@ public class DataItemChild {
     private String dateOfBirth;
     private String motherName;
     private String fatherName;
+    private String vaccines;
 
     public DataItemChild() {
     }
 
-    public DataItemChild(String guardian_id,String firstName, String lastName, String dateOfBirth, String motherName,String fatherName) {
+    public DataItemChild(String guardian_id,String firstName, String lastName, String dateOfBirth, String motherName,String fatherName,String vaccines) {
         this.guardian_id = guardian_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.motherName = motherName;
         this.fatherName = fatherName;
+        this.vaccines = vaccines;
     }
 
     public String getGuardian_id() {
@@ -72,6 +74,13 @@ public class DataItemChild {
         this.fatherName = fatherName;
     }
 
+    public String getVaccines() {
+        return vaccines;
+    }
+
+    public void setVaccines(String vaccines) {
+        this.vaccines = vaccines;
+    }
 
     public ContentValues toValues() {
         ContentValues values = new ContentValues(6);
@@ -81,6 +90,7 @@ public class DataItemChild {
         values.put(Tables.DOB, dateOfBirth);
         values.put(Tables.FATHER_NAME, fatherName);
         values.put(Tables.MOTHER_NAME, motherName);
+        values.put(Tables.VACCINES, vaccines);
         return values;
     }
 
@@ -93,6 +103,7 @@ public class DataItemChild {
                 ", dateOfBirth='" + dateOfBirth + '\'' +
                 ", motherName='" + motherName + '\'' +
                 ", fatherName='" + fatherName + '\'' +
+                ", vaccines='" + vaccines + '\'' +
                 '}';
     }
 }

@@ -33,8 +33,9 @@ public class Tables {
     public static final String DOB = "dateOfBirth";
     public static final String FATHER_NAME = "fatherName";
     public static final String MOTHER_NAME = "motherName";
+    public static final String VACCINES = "vaccines";
 
-    public static final String ALL_COLUMNS_CHILD[] = {ID,GUARDIAN_ID,FIRST_NAME,LAST_NAME,DOB,FATHER_NAME,MOTHER_NAME};
+    public static final String ALL_COLUMNS_CHILD[] = {ID,GUARDIAN_ID,FIRST_NAME,LAST_NAME,DOB,FATHER_NAME,MOTHER_NAME,VACCINES};
 
     //SQL to create Child table
     public static final String CHILD_TABLE_CREATE =
@@ -46,6 +47,7 @@ public class Tables {
                     DOB + " TEXT, " +
                     FATHER_NAME + " TEXT, " +
                     MOTHER_NAME + " TEXT, " +
+                    VACCINES + " TEXT, " +
                     PATIENT_CREATED + " TEXT default CURRENT_TIMESTAMP" +
                     ")";
     public static final String SQL_DELETE_TABLE_CHILD = "DROP TABLE" + TABLE_CHILD;

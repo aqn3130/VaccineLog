@@ -52,4 +52,20 @@
     <string name="register_practitioner_button_title">Register</string>
     <string name="practitionerRegistration">Registration</string>
     <string name="title_activity_practitioner">Practitioner Activity</string>
+    <string name="saveChildEdit">Save</string>
+    <string name="add_vaccine">Add Vaccine</string>
+    <string name="vaccine_bcg">BCG</string>
+    <string name="bcg_off">Add BCG</string>
+    <string name="opv_onn">OPV-0</string>
+    <string name="opv_off">Add OPV-0</string>
+    <string name="opv_1_off">Add OPV-1</string>
+    <string name="opv_1_on">OPV-1</string>
+    <string name="opv_2_off">Add OPV-2</string>
+    <string name="opv_2_on">OPV-2</string>
+    <string name="opv_3_off">Add OPV-3</string>
+    <string name="opv_3_on">OPV-3</string>
+    <string name="opv_4_off">Add OPV-4</string>
+    <string name="opv_4_on">OPV-4</string>
+    <string name="measles_off">Add Measles</string>
+    <string name="measles_on">Measles</string>
 </resources>
