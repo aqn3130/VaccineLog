@@ -48,7 +48,7 @@ public class ChildRegistration extends AppCompatActivity {
     }
 
     private void createItem(String guardianId,EditText fn, EditText ln, EditText dob, EditText fatherName, EditText motherName) {
-        DataItemChild dataItemChild = new DataItemChild(guardianId,fn.getText().toString(),ln.getText().toString(),dob.getText().toString(),fatherName.getText().toString(),motherName.getText().toString(),null);
+        DataItemChild dataItemChild = new DataItemChild(guardianId,fn.getText().toString(),ln.getText().toString(),dob.getText().toString(),fatherName.getText().toString(),motherName.getText().toString(),"bcgopv0opv1opv2opv3opv4measles");
         DataItemChild item = dataSourceChild.createItem(dataItemChild);
 
         Log.d("Child Registration", "Child added " + item.getFirstName());

@@ -9,20 +9,20 @@ public class DataItemChild {
     private String firstName;
     private String lastName;
     private String dateOfBirth;
-    private String motherName;
     private String fatherName;
+    private String motherName;
     private String vaccines;
 
     public DataItemChild() {
     }
 
-    public DataItemChild(String guardian_id,String firstName, String lastName, String dateOfBirth, String motherName,String fatherName,String vaccines) {
+    public DataItemChild(String guardian_id,String firstName, String lastName, String dateOfBirth,String fatherName, String motherName,String vaccines) {
         this.guardian_id = guardian_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.motherName = motherName;
         this.fatherName = fatherName;
+        this.motherName = motherName;
         this.vaccines = vaccines;
     }
 
@@ -101,8 +101,8 @@ public class DataItemChild {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +
-                ", motherName='" + motherName + '\'' +
                 ", fatherName='" + fatherName + '\'' +
+                ", motherName='" + motherName + '\'' +
                 ", vaccines='" + vaccines + '\'' +
                 '}';
     }

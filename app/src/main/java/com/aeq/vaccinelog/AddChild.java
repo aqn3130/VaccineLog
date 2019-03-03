@@ -79,13 +79,13 @@ public class AddChild extends AppCompatActivity {
 
         Log.d("Add Child","No of Children " + children.size());
 
-        final Intent intent = new Intent(this,ChildEdit.class);
 
         for (final DataItemChild child1 : children){
             Button button = new Button(this);
             String fullname = child1.getFirstName() + " " + child1.getLastName();
             button.setText(fullname);
 
+            final Intent intent = new Intent(this,ChildEdit.class);
             intent.putExtra(CHILD_NAME,child1.getFirstName());
             button.setOnClickListener(new View.OnClickListener() {
                 @Override

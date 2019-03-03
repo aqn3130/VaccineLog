@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="76dp">
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:id="@+id/edit_child_container"
@@ -19,7 +19,7 @@
             android:layout_height="277dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
@@ -74,87 +74,106 @@
                 android:inputType="text"
                 android:text="@string/childMotherName" />
 
-            <Button
-                android:id="@+id/button_edit_child"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="left"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorPrimary"
-                android:text="@string/saveChildEdit" />
-
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/vaccines_container"
-            android:layout_width="match_parent"
-            android:layout_height="345dp"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-            <ToggleButton
-                android:id="@+id/toggleButton"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:checked="false"
-                android:text="@string/vaccine_bcg"
-                android:textOff="@string/bcg_off"
-                android:textOn="@string/vaccine_bcg"
-                tools:text="@string/vaccine_bcg" />
+            <LinearLayout
+                android:id="@+id/vaccines_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_width="wrap_content">
 
-            <ToggleButton
-                android:id="@+id/toggleButton2"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="ToggleButton"
-                android:textOff="@string/opv_off"
-                android:textOn="@string/opv_onn" />
+                <ToggleButton
+                    android:id="@+id/toggleButton"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:checked="false"
+                    android:text="@string/vaccine_bcg"
+                    android:textOff="@string/bcg_off"
+                    android:textOn="@string/vaccine_bcg"
+                    tools:text="@string/vaccine_bcg" />
 
-            <ToggleButton
-                android:id="@+id/toggleButton3"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="ToggleButton"
-                android:textOff="@string/opv_1_off"
-                android:textOn="@string/opv_1_on" />
+                <ToggleButton
+                    android:id="@+id/toggleButton2"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton"
+                    android:textOff="@string/opv_off"
+                    android:textOn="@string/opv_onn" />
 
-            <ToggleButton
-                android:id="@+id/toggleButton4"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="ToggleButton"
-                android:textOff="@string/opv_2_off"
-                android:textOn="@string/opv_2_on" />
+                <ToggleButton
+                    android:id="@+id/toggleButton3"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton"
+                    android:textOff="@string/opv_1_off"
+                    android:textOn="@string/opv_1_on" />
 
-            <ToggleButton
-                android:id="@+id/toggleButton5"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="ToggleButton"
-                android:textOff="@string/opv_3_off"
-                android:textOn="@string/opv_3_on" />
+            </LinearLayout>
 
-            <ToggleButton
-                android:id="@+id/toggleButton6"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="ToggleButton"
-                android:textOff="@string/opv_4_off"
-                android:textOn="@string/opv_4_on" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:layout_width="wrap_content">
 
-            <ToggleButton
-                android:id="@+id/toggleButton7"
-                android:layout_width="180dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:text="ToggleButton"
-                android:textOff="@string/measles_off"
-                android:textOn="@string/measles_on" />
+                <ToggleButton
+                    android:id="@+id/toggleButton4"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton"
+                    android:textOff="@string/opv_2_off"
+                    android:textOn="@string/opv_2_on" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton5"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton"
+                    android:textOff="@string/opv_3_off"
+                    android:textOn="@string/opv_3_on" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton6"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton"
+                    android:textOff="@string/opv_4_off"
+                    android:textOn="@string/opv_4_on" />
+
+                <ToggleButton
+                    android:id="@+id/toggleButton7"
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:text="ToggleButton"
+                    android:textOff="@string/measles_off"
+                    android:textOn="@string/measles_on" />
+
+                <Button
+                    android:id="@+id/button_edit_child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/saveChildEdit"
+                    tools:layout_editor_absoluteX="315dp"
+                    tools:layout_editor_absoluteY="691dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

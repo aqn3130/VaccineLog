@@ -28,9 +28,9 @@ public class Tables {
     public static final String TABLE_CHILD = "child";
     public static final String ID = "_id";
     public static final String GUARDIAN_ID = "guardianId";
-    public static final String FIRST_NAME = "patientFirstName";
-    public static final String LAST_NAME = "patientLastName";
-    public static final String DOB = "dateOfBirth";
+    public static final String FIRST_NAME = "childFirstName";
+    public static final String LAST_NAME = "childLastName";
+    public static final String DOB = "childDateOfBirth";
     public static final String FATHER_NAME = "fatherName";
     public static final String MOTHER_NAME = "motherName";
     public static final String VACCINES = "vaccines";

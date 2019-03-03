@@ -43,16 +43,45 @@ public class DataSourceChild {
         return rowsDeleted;
     }
 
-    public int updateVaccine(DataItemChild itemChild,String vaccine){
+    public int updateItem(DataItemChild itemChild){
         ContentValues values = itemChild.toValues();
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,null,null);
+        return item;
+    }
+
+    public int updateVaccine(ContentValues values,String vaccine){
         String vaccineArr [] = {vaccine};
         int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.VACCINES + "=?",vaccineArr);
         return item;
     }
 
-    public int updateItem(DataItemChild itemChild){
-        ContentValues values = itemChild.toValues();
-        int item = mDatabase.update(Tables.TABLE_CHILD,values,null,null);
+    public int updateFirstName(ContentValues values, String fName){
+        String fNameArr [] = {fName};
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.FIRST_NAME + "=?",fNameArr);
+        return item;
+    }
+
+    public int updateLastName(ContentValues values, String lName){
+        String lNameArr [] = {lName};
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.LAST_NAME + "=?",lNameArr);
+        return item;
+    }
+
+    public int updateDOB(ContentValues values, String dob){
+        String dobArr [] = {dob};
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.DOB + "=?",dobArr);
+        return item;
+    }
+
+    public int updateFatherName(ContentValues values, String fatherName){
+        String fatherNameArr [] = {fatherName};
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.FATHER_NAME + "=?",fatherNameArr);
+        return item;
+    }
+
+    public int updateMotherName(ContentValues values, String motherName){
+        String motherNameArr [] = {motherName};
+        int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.MOTHER_NAME + "=?",motherNameArr);
         return item;
     }
 

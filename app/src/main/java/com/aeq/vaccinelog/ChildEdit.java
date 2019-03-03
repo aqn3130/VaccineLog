@@ -1,15 +1,19 @@
 package com.aeq.vaccinelog;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.aeq.vaccinelog.database.DataSourceChild;
+import com.aeq.vaccinelog.database.Tables;
 import com.aeq.vaccinelog.model.DataItemChild;
 
 public class ChildEdit extends AppCompatActivity {
@@ -78,13 +82,18 @@ public class ChildEdit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(bcg.isChecked()){
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                    dataSourceChild.updateItem(dataItemChild);
 
                     if(child.getVaccines() != null){
                         if(!child.getVaccines().contains("bcg"))
                             stringBuilder.append("bcg");
                     }
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("bcg")){
@@ -92,8 +101,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 3;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -118,8 +132,13 @@ public class ChildEdit extends AppCompatActivity {
                         if(!child.getVaccines().contains("opv0"))
                             stringBuilder.append("opv0");
                     }
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv0")){
@@ -127,8 +146,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 4;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -152,8 +176,13 @@ public class ChildEdit extends AppCompatActivity {
                         if(!child.getVaccines().contains("opv1"))
                             stringBuilder.append("opv1");
                     }
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv1")){
@@ -161,8 +190,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 4;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -186,8 +220,13 @@ public class ChildEdit extends AppCompatActivity {
                         if(!child.getVaccines().contains("opv2"))
                             stringBuilder.append("opv2");
                     }
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv2")){
@@ -195,8 +234,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 4;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -220,8 +264,13 @@ public class ChildEdit extends AppCompatActivity {
                         if(!child.getVaccines().contains("opv3"))
                             stringBuilder.append("opv3");
                     }
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv3")){
@@ -229,8 +278,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 4;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -254,8 +308,14 @@ public class ChildEdit extends AppCompatActivity {
                         if(!child.getVaccines().contains("opv4"))
                             stringBuilder.append("opv4");
                     }
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv4")){
@@ -263,8 +323,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 4;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -288,8 +353,15 @@ public class ChildEdit extends AppCompatActivity {
                         if(!child.getVaccines().contains("measles"))
                             stringBuilder.append("measles");
                     }
-                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                    dataSourceChild.updateItem(dataItemChild);
+                    ContentValues values = new ContentValues();
+                    values.put(Tables.VACCINES,stringBuilder.toString());
+
+                    int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+//
+////                    dataSourceChild.updateItem(dataItemChild);
+//                    dataSourceChild.updateVaccine(dataItemChild,stringBuilder.toString());
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("measles")){
@@ -297,8 +369,13 @@ public class ChildEdit extends AppCompatActivity {
                             int end = start + 7;
                             stringBuilder.replace(start,end,"");
                         }
-                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-                        dataSourceChild.updateItem(dataItemChild);
+                        ContentValues values = new ContentValues();
+                        values.put(Tables.VACCINES,stringBuilder.toString());
+                        int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
+
+//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
+////                        dataSourceChild.updateItem(dataItemChild);
+//                        dataSourceChild.updateVaccine(dataItemChild,stringBuilder.toString());
                     }
                 }
             }
@@ -314,25 +391,46 @@ public class ChildEdit extends AppCompatActivity {
     }
 
     private void save() {
-        dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-        dataSourceChild.updateItem(dataItemChild);
-        intent.putExtra(LoginActivity.DATA_ITEM_KEY,dataItemChild.getGuardian_id());
+
+        if(!child.getFirstName().equals(child_edit_fName.getText().toString())){
+            ContentValues values = new ContentValues();
+            values.put(Tables.FIRST_NAME,child_edit_fName.getText().toString());
+            int rows = dataSourceChild.updateFirstName(values,child.getFirstName());
+        }
+
+        if(!child.getLastName().equals(child_edit_lName.getText().toString())){
+            ContentValues values = new ContentValues();
+            values.put(Tables.LAST_NAME,child_edit_lName.getText().toString());
+            int rows = dataSourceChild.updateLastName(values,child.getLastName());
+        }
+
+        if(!child.getDateOfBirth().equals(child_edit_dob.getText().toString())){
+            ContentValues values = new ContentValues();
+            values.put(Tables.DOB,child_edit_dob.getText().toString());
+            int rows = dataSourceChild.updateDOB(values,child.getDateOfBirth());
+        }
+
+        if(!child.getFatherName().equals(child_edit_fatherName.getText().toString())){
+            ContentValues values = new ContentValues();
+            values.put(Tables.FATHER_NAME,child_edit_fatherName.getText().toString());
+            int rows = dataSourceChild.updateFatherName(values,child.getFatherName());
+        }
+
+        if(!child.getMotherName().equals(child_edit_motherName.getText().toString())){
+            ContentValues values = new ContentValues();
+            values.put(Tables.MOTHER_NAME,child_edit_motherName.getText().toString());
+            int rows = dataSourceChild.updateMotherName(values,child.getMotherName());
+        }
+
+        intent.putExtra(LoginActivity.DATA_ITEM_KEY,child.getGuardian_id());
         startActivity(intent);
     }
-
-//    @Override
-//    public void onBackPressed() {
-//
-//        dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//        dataSourceChild.updateItem(dataItemChild);
-//        intent.putExtra(GUARDIAN_KEY,dataItemChild.getGuardian_id());
-//        startActivity(intent);
-//    }
-
 
     @Override
     public void onBackPressed() {
         save();
+        intent.putExtra(LoginActivity.DATA_ITEM_KEY,child.getGuardian_id());
+        startActivity(intent);
     }
 
 }
