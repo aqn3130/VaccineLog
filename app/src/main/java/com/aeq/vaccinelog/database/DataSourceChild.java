@@ -61,6 +61,13 @@ public class DataSourceChild {
         return item;
     }
 
+    public int updateLastNameWithConflict(ContentValues values, String lName,String id){
+        String lNameArr [] = {lName};
+//        int item = mDatabase.updateWithOnConflict(Tables.TABLE_CHILD,values,Tables.LAST_NAME + "=?",lNameArr,mDatabase.CONFLICT_IGNORE);
+        int item = mDatabase.update(Tables.TABLE_CHILD,values, id,null);
+        return item;
+    }
+
     public int updateLastName(ContentValues values, String lName){
         String lNameArr [] = {lName};
         int item = mDatabase.update(Tables.TABLE_CHILD,values,Tables.LAST_NAME + "=?",lNameArr);
@@ -101,6 +108,7 @@ public class DataSourceChild {
             item.setFatherName(cursor.getString(cursor.getColumnIndex(Tables.FATHER_NAME)));
             item.setMotherName(cursor.getString(cursor.getColumnIndex(Tables.MOTHER_NAME)));
             item.setVaccines(cursor.getString(cursor.getColumnIndex(Tables.VACCINES)));
+            item.setChild_id(cursor.getString(cursor.getColumnIndex(Tables.CHILD_ID)));
             dataItemsChild.add(item);
         }
         cursor.close();
@@ -124,6 +132,7 @@ public class DataSourceChild {
             item.setFatherName(cursor.getString(cursor.getColumnIndex(Tables.FATHER_NAME)));
             item.setMotherName(cursor.getString(cursor.getColumnIndex(Tables.MOTHER_NAME)));
             item.setVaccines(cursor.getString(cursor.getColumnIndex(Tables.VACCINES)));
+            item.setChild_id(cursor.getString(cursor.getColumnIndex(Tables.CHILD_ID)));
         }
         cursor.close();
         return item;
@@ -146,6 +155,7 @@ public class DataSourceChild {
             item.setFatherName(cursor.getString(cursor.getColumnIndex(Tables.FATHER_NAME)));
             item.setMotherName(cursor.getString(cursor.getColumnIndex(Tables.MOTHER_NAME)));
             item.setVaccines(cursor.getString(cursor.getColumnIndex(Tables.VACCINES)));
+            item.setChild_id(cursor.getString(cursor.getColumnIndex(Tables.CHILD_ID)));
         }
         cursor.close();
         return item;

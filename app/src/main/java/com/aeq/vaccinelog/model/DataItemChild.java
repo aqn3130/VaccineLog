@@ -6,6 +6,7 @@ import com.aeq.vaccinelog.database.Tables;
 
 public class DataItemChild {
     private String guardian_id;
+    private String child_id;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
@@ -16,8 +17,9 @@ public class DataItemChild {
     public DataItemChild() {
     }
 
-    public DataItemChild(String guardian_id,String firstName, String lastName, String dateOfBirth,String fatherName, String motherName,String vaccines) {
+    public DataItemChild(String guardian_id,String child_id,String firstName, String lastName, String dateOfBirth,String fatherName, String motherName,String vaccines) {
         this.guardian_id = guardian_id;
+        this.child_id = child_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -82,9 +84,18 @@ public class DataItemChild {
         this.vaccines = vaccines;
     }
 
+    public String getChild_id() {
+        return child_id;
+    }
+
+    public void setChild_id(String child_id) {
+        this.child_id = child_id;
+    }
+
     public ContentValues toValues() {
-        ContentValues values = new ContentValues(6);
+        ContentValues values = new ContentValues(8);
         values.put(Tables.GUARDIAN_ID, guardian_id);
+        values.put(Tables.CHILD_ID, child_id);
         values.put(Tables.FIRST_NAME, firstName);
         values.put(Tables.LAST_NAME, lastName);
         values.put(Tables.DOB, dateOfBirth);
@@ -98,6 +109,7 @@ public class DataItemChild {
     public String toString() {
         return "DataItemChild{" +
                 "guardian_id='" + guardian_id + '\'' +
+                "child_id='" + child_id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth='" + dateOfBirth + '\'' +

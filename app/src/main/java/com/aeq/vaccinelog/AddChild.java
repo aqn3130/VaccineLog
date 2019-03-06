@@ -104,4 +104,10 @@ public class AddChild extends AppCompatActivity {
             viewGroup.addView(button);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this,LandingPage.class);
+        startActivity(intent);
+    }
 }

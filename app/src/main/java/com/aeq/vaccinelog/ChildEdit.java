@@ -66,13 +66,13 @@ public class ChildEdit extends AppCompatActivity {
         intent = new Intent(this, AddChild.class);
 
         stringBuilder = new StringBuilder();
+        stringBuilder.append(child.getVaccines());
 
         final ToggleButton bcg = findViewById(R.id.toggleButton);
 
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("bcg")){
                 bcg.setChecked(true);
-                stringBuilder.append("bcg");
             }else {
                 bcg.setChecked(false);
             }
@@ -82,18 +82,13 @@ public class ChildEdit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(bcg.isChecked()){
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                    dataSourceChild.updateItem(dataItemChild);
-
                     if(child.getVaccines() != null){
                         if(!child.getVaccines().contains("bcg"))
                             stringBuilder.append("bcg");
                     }
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("bcg")){
@@ -103,11 +98,7 @@ public class ChildEdit extends AppCompatActivity {
                         }
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
-
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -117,7 +108,6 @@ public class ChildEdit extends AppCompatActivity {
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("opv0")){
                 opv_0.setChecked(true);
-                stringBuilder.append("opv0");
             }else {
                 opv_0.setChecked(false);
             }
@@ -134,11 +124,7 @@ public class ChildEdit extends AppCompatActivity {
                     }
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv0")){
@@ -148,11 +134,7 @@ public class ChildEdit extends AppCompatActivity {
                         }
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
-
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -162,7 +144,6 @@ public class ChildEdit extends AppCompatActivity {
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("opv1")){
                 opv_1.setChecked(true);
-                stringBuilder.append("opv1");
             }else {
                 opv_1.setChecked(false);
             }
@@ -178,11 +159,7 @@ public class ChildEdit extends AppCompatActivity {
                     }
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv1")){
@@ -192,11 +169,7 @@ public class ChildEdit extends AppCompatActivity {
                         }
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
-
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -206,7 +179,6 @@ public class ChildEdit extends AppCompatActivity {
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("opv2")){
                 opv_2.setChecked(true);
-                stringBuilder.append("opv2");
             }else {
                 opv_2.setChecked(false);
             }
@@ -222,11 +194,7 @@ public class ChildEdit extends AppCompatActivity {
                     }
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv2")){
@@ -236,11 +204,7 @@ public class ChildEdit extends AppCompatActivity {
                         }
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
-
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -250,7 +214,6 @@ public class ChildEdit extends AppCompatActivity {
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("opv3")){
                 opv_3.setChecked(true);
-                stringBuilder.append("opv3");
             }else {
                 opv_3.setChecked(false);
             }
@@ -266,11 +229,7 @@ public class ChildEdit extends AppCompatActivity {
                     }
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv3")){
@@ -280,11 +239,7 @@ public class ChildEdit extends AppCompatActivity {
                         }
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
-
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -294,7 +249,6 @@ public class ChildEdit extends AppCompatActivity {
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("opv4")){
                 opv_4.setChecked(true);
-                stringBuilder.append("opv4");
             }else {
                 opv_4.setChecked(false);
             }
@@ -311,11 +265,7 @@ public class ChildEdit extends AppCompatActivity {
 
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                    dataSourceChild.updateItem(dataItemChild);
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("opv4")){
@@ -325,11 +275,7 @@ public class ChildEdit extends AppCompatActivity {
                         }
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
-
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//                        dataSourceChild.updateItem(dataItemChild);
                     }
                 }
             }
@@ -339,7 +285,6 @@ public class ChildEdit extends AppCompatActivity {
         if(child.getVaccines() != null){
             if(child.getVaccines().contains("measles")){
                 measles.setChecked(true);
-                stringBuilder.append("measles");
             }else {
                 measles.setChecked(false);
             }
@@ -355,13 +300,7 @@ public class ChildEdit extends AppCompatActivity {
                     }
                     ContentValues values = new ContentValues();
                     values.put(Tables.VACCINES,stringBuilder.toString());
-
                     int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                    DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-//
-////                    dataSourceChild.updateItem(dataItemChild);
-//                    dataSourceChild.updateVaccine(dataItemChild,stringBuilder.toString());
                 }else {
                     if(child.getVaccines() != null){
                         if(child.getVaccines().contains("measles")){
@@ -372,10 +311,6 @@ public class ChildEdit extends AppCompatActivity {
                         ContentValues values = new ContentValues();
                         values.put(Tables.VACCINES,stringBuilder.toString());
                         int rows = dataSourceChild.updateVaccine(values,child.getVaccines());
-
-//                        DataItemChild dataItemChild = new DataItemChild(child.getGuardian_id(),child_edit_fName.getText().toString(),child_edit_lName.getText().toString(),child_edit_dob.getText().toString(),child_edit_fatherName.getText().toString(),child_edit_motherName.getText().toString(),stringBuilder.toString());
-////                        dataSourceChild.updateItem(dataItemChild);
-//                        dataSourceChild.updateVaccine(dataItemChild,stringBuilder.toString());
                     }
                 }
             }
@@ -402,6 +337,7 @@ public class ChildEdit extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put(Tables.LAST_NAME,child_edit_lName.getText().toString());
             int rows = dataSourceChild.updateLastName(values,child.getLastName());
+//            int crows = dataSourceChild.updateLastNameWithConflict(values,child_edit_lName.getText().toString(),"1");
         }
 
         if(!child.getDateOfBirth().equals(child_edit_dob.getText().toString())){

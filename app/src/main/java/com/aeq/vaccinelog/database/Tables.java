@@ -28,6 +28,7 @@ public class Tables {
     public static final String TABLE_CHILD = "child";
     public static final String ID = "_id";
     public static final String GUARDIAN_ID = "guardianId";
+    public static final String CHILD_ID = "childId";
     public static final String FIRST_NAME = "childFirstName";
     public static final String LAST_NAME = "childLastName";
     public static final String DOB = "childDateOfBirth";
@@ -35,13 +36,14 @@ public class Tables {
     public static final String MOTHER_NAME = "motherName";
     public static final String VACCINES = "vaccines";
 
-    public static final String ALL_COLUMNS_CHILD[] = {ID,GUARDIAN_ID,FIRST_NAME,LAST_NAME,DOB,FATHER_NAME,MOTHER_NAME,VACCINES};
+    public static final String ALL_COLUMNS_CHILD[] = {ID,GUARDIAN_ID,CHILD_ID,FIRST_NAME,LAST_NAME,DOB,FATHER_NAME,MOTHER_NAME,VACCINES};
 
     //SQL to create Child table
     public static final String CHILD_TABLE_CREATE =
             "CREATE TABLE " + TABLE_CHILD + " (" +
                     ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     GUARDIAN_ID + " TEXT, " +
+                    CHILD_ID + " TEXT, " +
                     FIRST_NAME + " TEXT, " +
                     LAST_NAME + " TEXT, " +
                     DOB + " TEXT, " +

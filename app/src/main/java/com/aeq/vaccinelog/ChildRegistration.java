@@ -16,6 +16,7 @@ import com.aeq.vaccinelog.model.DataItemChild;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ChildRegistration extends AppCompatActivity {
 
@@ -48,7 +49,9 @@ public class ChildRegistration extends AppCompatActivity {
     }
 
     private void createItem(String guardianId,EditText fn, EditText ln, EditText dob, EditText fatherName, EditText motherName) {
-        DataItemChild dataItemChild = new DataItemChild(guardianId,fn.getText().toString(),ln.getText().toString(),dob.getText().toString(),fatherName.getText().toString(),motherName.getText().toString(),"bcgopv0opv1opv2opv3opv4measles");
+        String childId = UUID.randomUUID().toString();
+        DataItemChild dataItemChild = new DataItemChild(guardianId, childId,fn.getText().toString(),ln.getText().toString(),dob.getText().toString(),
+                fatherName.getText().toString(),motherName.getText().toString(),"bcgopv0opv1opv2opv3opv4measles"+childId);
         DataItemChild item = dataSourceChild.createItem(dataItemChild);
 
         Log.d("Child Registration", "Child added " + item.getFirstName());
