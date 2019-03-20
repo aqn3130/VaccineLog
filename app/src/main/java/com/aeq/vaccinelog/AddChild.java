@@ -8,6 +8,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -79,7 +81,6 @@ public class AddChild extends AppCompatActivity {
 
         Log.d("Add Child","No of Children " + children.size());
 
-
         for (final DataItemChild child1 : children){
             Button button = new Button(this);
             String fullname = child1.getFirstName() + " " + child1.getLastName();
@@ -103,6 +104,13 @@ public class AddChild extends AppCompatActivity {
             });
             viewGroup.addView(button);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_child_edit,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

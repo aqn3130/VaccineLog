@@ -23,8 +23,8 @@
     <string name="title_activity_menu">Menu</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Vaccine Log</string>
+    <string name="nav_header_subtitle">App user email</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_child">Add Child</string>
@@ -68,4 +68,11 @@
     <string name="opv_4_on">OPV-4</string>
     <string name="measles_off">Add Measles</string>
     <string name="measles_on">Measles</string>
+    <string name="delete_child">Delete</string>
+    <string name="opv0">OPV0</string>
+    <string name="opv1">OPV1</string>
+    <string name="opv2">OPV2</string>
+    <string name="opv3">OPV3</string>
+    <string name="opv4">OPV4</string>
+    <string name="measles">MEASLES</string>
 </resources>

@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +17,8 @@ import android.widget.ToggleButton;
 import com.aeq.vaccinelog.database.DataSourceChild;
 import com.aeq.vaccinelog.database.Tables;
 import com.aeq.vaccinelog.model.DataItemChild;
+
+import java.util.zip.Inflater;
 
 public class ChildEdit extends AppCompatActivity {
 
@@ -323,6 +327,13 @@ public class ChildEdit extends AppCompatActivity {
                 save();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings_child_edit,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void save() {

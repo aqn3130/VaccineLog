@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class PractitionerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -56,6 +59,11 @@ public class PractitionerActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.practitioner, menu);
+
+        String userEmail = getIntent().getExtras().getString(LoginActivity.PRACTITIONER_EMAIL);
+        TextView textView = findViewById(R.id.user_email_address);
+        textView.setText(userEmail);
+
         return true;
     }
 
@@ -83,6 +91,7 @@ public class PractitionerActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+
 
         } else if (id == R.id.nav_slideshow) {
 
